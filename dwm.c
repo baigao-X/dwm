@@ -451,9 +451,18 @@ buttonpress(XEvent *e)
 	}
 	if (ev->window == selmon->barwin) {
 		i = x = 0;
-		do
-			x += TEXTW(tags[i]);
-		while (ev->x >= x && ++i < LENGTH(tags));
+
+        if (selmon->isoverview) {
+            x += TEXTW(overviewtag);
+            i = ~0;
+            if (ev->x > x)
+                i = LENGTH(tags);
+        } else {
+            do {
+                x += TEXTW(tags[i]);
+            } while (ev->x >= x && ++i < LENGTH(tags));
+        }
+
 		if (i < LENGTH(tags)) {
 			click = ClkTagBar;
 			arg.ui = 1 << i;
