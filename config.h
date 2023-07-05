@@ -57,6 +57,10 @@ static const Layout layouts[] = {
     { "﩯",       magicgrid },    /* 网格 */
 };
 
+static const char *overviewtag = "OVERVIEW";
+/* static const Layout overviewlayout = { "舘",  overview }; */
+static const Layout overviewlayout = { "^",  overview };
+
 /* key definitions */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
@@ -86,6 +90,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+    { MODKEY,                       XK_a,      toggleoverview, {0} },                     /* super a            |  显示所有tag 或 跳转到聚焦窗口的tag */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
