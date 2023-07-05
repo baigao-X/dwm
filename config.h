@@ -1,5 +1,19 @@
 /* See LICENSE file for copyright and license details. */
 
+
+
+static const int newclientathead         = 0;         /* 定义新窗口在栈顶还是栈底, 0-栈底 1-栈顶*/
+static int gappi                         = 12;        /* 窗口与窗口 缝隙大小 */
+static int gappo                         = 12;        /* 窗口与边缘 缝隙大小 */
+static const int _gappo                  = 12;        /* 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值 */
+static const int _gappi                  = 12;        /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
+static const int overviewgappi           = 24;        /* overview时 窗口与边缘 缝隙大小 */
+static const int overviewgappo           = 60;        /* overview时 窗口与窗口 缝隙大小 */
+
+
+
+
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -39,9 +53,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+    { "﬿",        tile },         /* 主次栈 */
+    { "﩯",       magicgrid },    /* 网格 */
 };
 
 /* key definitions */
