@@ -169,15 +169,15 @@ static Key keys[] = {
     { MODKEY|ControlMask,  XK_minus,        setgap,           {.i = +6} },               /* mod ctrl -       |  窗口减小 */
     { MODKEY|ControlMask,  XK_space,        setgap,           {.i = 0} },                /* mod ctrl space   |  窗口重置 */
 
-    { MODKEY|ControlMask,  XK_k,            movewin,          {.ui = UP} },              /* mod ctrl up      |  移动窗口 */
-    { MODKEY|ControlMask,  XK_j,            movewin,          {.ui = DOWN} },            /* mod ctrl down    |  移动窗口 */
-    { MODKEY|ControlMask,  XK_h,            movewin,          {.ui = LEFT} },            /* mod ctrl left    |  移动窗口 */
-    { MODKEY|ControlMask,  XK_l,            movewin,          {.ui = RIGHT} },           /* mod ctrl right   |  移动窗口 */
+    { MODKEY|ControlMask,  XK_k,            movewin,          {.ui = UP} },              /* mod ctrl k       |  移动窗口 */
+    { MODKEY|ControlMask,  XK_j,            movewin,          {.ui = DOWN} },            /* mod ctrl j       |  移动窗口 */
+    { MODKEY|ControlMask,  XK_h,            movewin,          {.ui = LEFT} },            /* mod ctrl h       |  移动窗口 */
+    { MODKEY|ControlMask,  XK_l,            movewin,          {.ui = RIGHT} },           /* mod ctrl l       |  移动窗口 */
 
-    { MODKEY|ControlMask,  XK_Up,           resizewin,        {.ui = V_REDUCE} },        /* mod alt up       |  调整窗口 */
-    { MODKEY|ControlMask,  XK_Down,         resizewin,        {.ui = V_EXPAND} },        /* mod alt down     |  调整窗口 */
-    { MODKEY|ControlMask,  XK_Left,         resizewin,        {.ui = H_REDUCE} },        /* mod alt left     |  调整窗口 */
-    { MODKEY|ControlMask,  XK_Right,        resizewin,        {.ui = H_EXPAND} },        /* mod alt right    |  调整窗口 */
+    { MODKEY|ControlMask,  XK_Up,           resizewin,        {.ui = V_REDUCE} },        /* mod ctrl up      |  调整窗口 */
+    { MODKEY|ControlMask,  XK_Down,         resizewin,        {.ui = V_EXPAND} },        /* mod ctrl down    |  调整窗口 */
+    { MODKEY|ControlMask,  XK_Left,         resizewin,        {.ui = H_REDUCE} },        /* mod ctrl left    |  调整窗口 */
+    { MODKEY|ControlMask,  XK_Right,        resizewin,        {.ui = H_EXPAND} },        /* mod ctrl right   |  调整窗口 */
 
   	{ MODKEY,              XK_k,            focusdir,         {.i = UP } },              /* mod k            | 二维聚焦窗口 */
   	{ MODKEY,              XK_j,            focusdir,         {.i = DOWN } },            /* mod j            | 二维聚焦窗口 */
@@ -189,16 +189,17 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_l,            exchange_client,  {.i = RIGHT } },           /* mod shift l      | 二维交换窗口 (仅平铺) */
 
     /* spawn + SHCMD 执行对应命令(已下部分建议完全自己重新定义) */
+    { MODKEY|ShiftMask,    XK_F12,    spawn, SHCMD("killall dwm") },                                            /* mod shift f12  |  强制退出dwm */
     { MODKEY,              XK_s,      togglescratch, SHCMD("st -t scratchpad -c float") },                      /* mod s          | 打开scratch终端        */
     { MODKEY,              XK_Return, spawn, SHCMD("st") },                                                     /* mod enter      | 打开st终端             */
     { MODKEY,              XK_minus,  spawn, SHCMD("st -c FG") },                                               /* mod +          | 打开全局st终端         */
     { MODKEY,              XK_space,  spawn, SHCMD("st -c float") },                                            /* mod space      | 打开浮动st终端         */
     { MODKEY,              XK_F1,     spawn, SHCMD("killall pcmanfm || pcmanfm") },                             /* mod F1         | 打开/关闭pcmanfm       */
     { MODKEY,              XK_r,      spawn, SHCMD("rofi -show run") },                                         /* mod d          | rofi: 执行run          */
-    { MODKEY,              XK_p,      spawn, SHCMD("$DWM/rofi.sh") },                                       /* mod p          | rofi: 执行自定义脚本   */
-    { MODKEY,              XK_n,      spawn, SHCMD("$DWM/blurlock.sh") },                                   /* mod n          | 锁定屏幕               */
-    { MODKEY|ShiftMask,    XK_Up,     spawn, SHCMD("$DWM/set_vol.sh up") },                                 /* mod shift up   | 音量加                 */
-    { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("$DWM/set_vol.sh down") },                               /* mod shift down | 音量减                 */
+    { MODKEY,              XK_p,      spawn, SHCMD("$DWM/rofi.sh") },                                           /* mod p          | rofi: 执行自定义脚本   */
+    { MODKEY,              XK_n,      spawn, SHCMD("$DWM/blurlock.sh") },                                       /* mod n          | 锁定屏幕               */
+    { MODKEY|ShiftMask,    XK_Up,     spawn, SHCMD("$DWM/set_vol.sh up") },                                     /* mod shift up   | 音量加                 */
+    { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("$DWM/set_vol.sh down") },                                   /* mod shift down | 音量减                 */
     { MODKEY|ShiftMask,    XK_a,      spawn, SHCMD("flameshot gui -c -p ~/Pictures/screenshots") },             /* mod shift a    | 截图                   */
     { MODKEY|ShiftMask,    XK_q,      spawn, SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')") }, /* mod shift q    | 选中某个窗口并强制kill */
 
