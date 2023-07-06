@@ -57,12 +57,12 @@ static const char *tags[] = {
     "", // tag:0  key:1  desc:terminal1
     "", // tag:1  key:2  desc:terminal2
     "", // tag:2  key:3  desc:terminal3
-    "󰕧", // tag:4  key:9  desc:obs
-    "", // tag:5  key:c  desc:chrome
-    "", // tag:6  key:m  desc:music
-    "ﬄ", // tag:7  key:0  desc:qq
-    "﬐", // tag:8  key:w  desc:wechat
-    "", // tag:9  key:l  desc:wxwork
+    "", // tag:3  key:b  desc:obsidian
+    "", // tag:4  key:c  desc:chrome
+    "", // tag:5  key:m  desc:music
+    "ﬄ", // tag:6  key:0  desc:qq
+    "﬐", // tag:7  key:w  desc:wechat
+    "", // tag:8  key:l  desc:wxwork
 };
 
 /* 自定义窗口显示规则 */
@@ -80,7 +80,7 @@ static const Rule rules[] = {
     { NULL,                  NULL,                "图片查看",        0,            1,          0,          0,        -1,      0}, // 微信图片查看器      浮动
 
     /** 普通优先度 */
-    {"obs",                  NULL,                 NULL,             1 << 3,       0,          0,          0,        -1,      0}, // obs        tag -> 󰕧
+    {"obsidian",             NULL,                 NULL,             1 << 3,       0,          0,          0,        -1,      0}, // obs        tag -> 󰕧
     {"chrome",               NULL,                 NULL,             1 << 4,       0,          0,          0,        -1,      0}, // chrome     tag -> 
     {"Chromium",             NULL,                 NULL,             1 << 4,       0,          0,          0,        -1,      0}, // Chromium   tag -> 
     {"music",                NULL,                 NULL,             1 << 5,       1,          0,          1,        -1,      0}, // music      tag ->  浮动、无边框
@@ -155,8 +155,8 @@ static Key keys[] = {
     { MODKEY,              XK_u,            toggleborder,     {0} },                     /* mod u            |  开启/关闭 边框 */
     { MODKEY,              XK_e,            incnmaster,       {.i = +1} },               /* mod e            |  改变主工作区窗口数量 (1 2中切换) */
 
-    { MODKEY,              XK_b,            focusmon,         {.i = +1} },               /* mod b            |  光标移动到另一个显示器 */
-    { MODKEY|ShiftMask,    XK_b,            tagmon,           {.i = +1} },               /* mod shift b      |  将聚焦窗口移动到另一个显示器 */
+    { MODKEY,              XK_F10,          focusmon,         {.i = +1} },               /* mod b            |  光标移动到另一个显示器 */
+    { MODKEY|ShiftMask,    XK_F10,          tagmon,           {.i = +1} },               /* mod shift b      |  将聚焦窗口移动到另一个显示器 */
 
     { MODKEY,              XK_q,            killclient,       {0} },                     /* mod q            |  关闭窗口 */
     { MODKEY|ControlMask,  XK_q,            forcekillclient,  {0} },                     /* mod ctrl q       |  强制关闭窗口(处理某些情况下无法销毁的窗口) */
@@ -169,15 +169,15 @@ static Key keys[] = {
     { MODKEY|ControlMask,  XK_minus,        setgap,           {.i = +6} },               /* mod ctrl -       |  窗口减小 */
     { MODKEY|ControlMask,  XK_space,        setgap,           {.i = 0} },                /* mod ctrl space   |  窗口重置 */
 
-    { MODKEY|ControlMask,  XK_Up,           movewin,          {.ui = UP} },              /* mod ctrl up      |  移动窗口 */
-    { MODKEY|ControlMask,  XK_Down,         movewin,          {.ui = DOWN} },            /* mod ctrl down    |  移动窗口 */
-    { MODKEY|ControlMask,  XK_Left,         movewin,          {.ui = LEFT} },            /* mod ctrl left    |  移动窗口 */
-    { MODKEY|ControlMask,  XK_Right,        movewin,          {.ui = RIGHT} },           /* mod ctrl right   |  移动窗口 */
+    { MODKEY|ControlMask,  XK_k,            movewin,          {.ui = UP} },              /* mod ctrl up      |  移动窗口 */
+    { MODKEY|ControlMask,  XK_j,            movewin,          {.ui = DOWN} },            /* mod ctrl down    |  移动窗口 */
+    { MODKEY|ControlMask,  XK_h,            movewin,          {.ui = LEFT} },            /* mod ctrl left    |  移动窗口 */
+    { MODKEY|ControlMask,  XK_l,            movewin,          {.ui = RIGHT} },           /* mod ctrl right   |  移动窗口 */
 
-    { MODKEY|Mod1Mask,     XK_Up,           resizewin,        {.ui = V_REDUCE} },        /* mod alt up       |  调整窗口 */
-    { MODKEY|Mod1Mask,     XK_Down,         resizewin,        {.ui = V_EXPAND} },        /* mod alt down     |  调整窗口 */
-    { MODKEY|Mod1Mask,     XK_Left,         resizewin,        {.ui = H_REDUCE} },        /* mod alt left     |  调整窗口 */
-    { MODKEY|Mod1Mask,     XK_Right,        resizewin,        {.ui = H_EXPAND} },        /* mod alt right    |  调整窗口 */
+    { MODKEY|ControlMask,  XK_Up,           resizewin,        {.ui = V_REDUCE} },        /* mod alt up       |  调整窗口 */
+    { MODKEY|ControlMask,  XK_Down,         resizewin,        {.ui = V_EXPAND} },        /* mod alt down     |  调整窗口 */
+    { MODKEY|ControlMask,  XK_Left,         resizewin,        {.ui = H_REDUCE} },        /* mod alt left     |  调整窗口 */
+    { MODKEY|ControlMask,  XK_Right,        resizewin,        {.ui = H_EXPAND} },        /* mod alt right    |  调整窗口 */
 
   	{ MODKEY,              XK_k,            focusdir,         {.i = UP } },              /* mod k            | 二维聚焦窗口 */
   	{ MODKEY,              XK_j,            focusdir,         {.i = DOWN } },            /* mod j            | 二维聚焦窗口 */
@@ -194,11 +194,11 @@ static Key keys[] = {
     { MODKEY,              XK_minus,  spawn, SHCMD("st -c FG") },                                               /* mod +          | 打开全局st终端         */
     { MODKEY,              XK_space,  spawn, SHCMD("st -c float") },                                            /* mod space      | 打开浮动st终端         */
     { MODKEY,              XK_F1,     spawn, SHCMD("killall pcmanfm || pcmanfm") },                             /* mod F1         | 打开/关闭pcmanfm       */
-    { MODKEY,              XK_d,      spawn, SHCMD("rofi -show run") },                                         /* mod d          | rofi: 执行run          */
-    { MODKEY,              XK_p,      spawn, SHCMD("$DWM/DEF/rofi.sh") },                                       /* mod p          | rofi: 执行自定义脚本   */
-    { MODKEY,              XK_n,      spawn, SHCMD("$DWM/DEF/blurlock.sh") },                                   /* mod n          | 锁定屏幕               */
-    { MODKEY|ShiftMask,    XK_Up,     spawn, SHCMD("$DWM/DEF/set_vol.sh up") },                                 /* mod shift up   | 音量加                 */
-    { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("$DWM/DEF/set_vol.sh down") },                               /* mod shift down | 音量减                 */
+    { MODKEY,              XK_r,      spawn, SHCMD("rofi -show run") },                                         /* mod d          | rofi: 执行run          */
+    { MODKEY,              XK_p,      spawn, SHCMD("$DWM/rofi.sh") },                                       /* mod p          | rofi: 执行自定义脚本   */
+    { MODKEY,              XK_n,      spawn, SHCMD("$DWM/blurlock.sh") },                                   /* mod n          | 锁定屏幕               */
+    { MODKEY|ShiftMask,    XK_Up,     spawn, SHCMD("$DWM/set_vol.sh up") },                                 /* mod shift up   | 音量加                 */
+    { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("$DWM/set_vol.sh down") },                               /* mod shift down | 音量减                 */
     { MODKEY|ShiftMask,    XK_a,      spawn, SHCMD("flameshot gui -c -p ~/Pictures/screenshots") },             /* mod shift a    | 截图                   */
     { MODKEY|ShiftMask,    XK_q,      spawn, SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')") }, /* mod shift q    | 选中某个窗口并强制kill */
 
@@ -208,7 +208,7 @@ static Key keys[] = {
     TAGKEYS(XK_1, 0, 0)
     TAGKEYS(XK_2, 1, 0)
     TAGKEYS(XK_3, 2, 0)
-    TAGKEYS(XK_9, 3, "obs")
+    TAGKEYS(XK_b, 3, "obsidian")
     TAGKEYS(XK_c, 4, "google-chrome-stable")
     TAGKEYS(XK_m, 5, "~/scripts/music_player.sh")
     TAGKEYS(XK_0, 6, "linuxqq")
