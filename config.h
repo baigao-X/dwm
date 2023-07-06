@@ -17,11 +17,11 @@ static const int overviewgappo           = 60;        /* overview时 窗口与�
 static const int showbar                 = 1;         /* 是否显示状态栏 */
 static const int topbar                  = 1;         /* 指定状态栏位置 0底部 1顶部 */
 static const float mfact                 = 0.6;       /* 主工作区 大小比例 */
-static const int   nmaster               = 1;         /* 主工作区 窗口数量 */
+static const int   nmaster               = 2;         /* 主工作区 窗口数量 */
 static const unsigned int snap           = 10;        /* 边缘依附宽度 */
 static const unsigned int baralpha       = 0xc0;      /* 状态栏透明度 */
 static const unsigned int borderalpha    = 0xdd;      /* 边框透明度 */
-static const char *fonts[]               = { "JetBrainsMono Nerd Font:style=medium:size=13", "monospace:size=13" };
+static const char *fonts[]               = { "JetBrainsMono Nerd Font:style=medium:size=11", "monospace:size=11" };
 static const char *colors[][3]           = {          /* 颜色设置 ColFg, ColBg, ColBorder */ 
     [SchemeNorm] = { "#bbbbbb", "#333333", "#444444" },
     [SchemeSel] = { "#ffffff", "#37474F", "#42A5F5" },
@@ -116,8 +116,8 @@ static const Layout layouts[] = {
 };
 
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-/* #define MODKEY Mod1Mask */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask //alt
+//#define MODKEY Mod4Mask //super
 #define TAGKEYS(KEY, TAG, cmd) \
     { MODKEY,              KEY, view,       {.ui = 1 << TAG, .v = cmd} }, \
     { MODKEY|ShiftMask,    KEY, tag,        {.ui = 1 << TAG} }, \
