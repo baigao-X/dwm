@@ -22,7 +22,7 @@ execute_menu() {
             coproc (sudo docker stop v2raya > /dev/null && $DWM/statusbar/statusbar.sh updateall > /dev/null)
             ;;
         ' open picom')
-            coproc (picom --experimental-backends --config ~/scripts/config/picom.conf > /dev/null 2>&1)
+            coproc (picom --experimental-backends --config ~/.config/picom/picom.conf > /dev/null 2>&1)
             ;;
         ' close picom')
             killall picom
