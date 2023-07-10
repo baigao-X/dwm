@@ -57,8 +57,8 @@ static const char *tags[] = {
     "", // tag:0  key:1  desc:terminal1
     "", // tag:1  key:2  desc:terminal2
     "", // tag:2  key:3  desc:terminal3
-    "", // tag:3  key:c  desc:chrome
-    "", // tag:4  key:b  desc:obsidian
+    "", // tag:3  key:b  desc:obsidian
+    "", // tag:4  key:c  desc:chrome
     "", // tag:5  key:m  desc:music
     "ﬄ", // tag:6  key:0  desc:qq
     "﬐", // tag:7  key:w  desc:wechat
@@ -125,18 +125,18 @@ static const Layout layouts[] = {
 
 static Key keys[] = {
     /* modifier            key              function          argument */
-    { MODKEY,              XK_equal,        togglesystray,    {0} },                     /* mod +            |  切换 托盘栏显示状态 */
+    { MODKEY,              XK_BackSpace,    togglesystray,    {0} },                     /* mod backspace   |  切换 托盘栏显示状态 */
 
     { MODKEY,              XK_Tab,          focusstack,       {.i = +1} },               /* mod tab          |  本tag内切换聚焦窗口 */
     { MODKEY|ShiftMask,    XK_Tab,          focusstack,       {.i = -1} },               /* mod shift tab    |  本tag内切换聚焦窗口 */
-    { MODKEY,              XK_Up,           focusstack,       {.i = -1} },               /* mod up           |  本tag内切换聚焦窗口 */
-    { MODKEY,              XK_Down,         focusstack,       {.i = +1} },               /* mod down         |  本tag内切换聚焦窗口 */
 
-    { MODKEY,              XK_Left,         viewtoleft,       {0} },                     /* mod left         |  聚焦到左边的tag */
-    { MODKEY,              XK_Right,        viewtoright,      {0} },                     /* mod right        |  聚焦到右边的tag */
-    { MODKEY|ShiftMask,    XK_Left,         tagtoleft,        {0} },                     /* mod shift left   |  将本窗口移动到左边tag */
-    { MODKEY|ShiftMask,    XK_Right,        tagtoright,       {0} },                     /* mod shift right  |  将本窗口移动到右边tag */
+    { MODKEY,              XK_comma,        viewtoleft,       {0} },                     /* mod ,            |  聚焦到左边的tag */
+    { MODKEY,              XK_period,       viewtoright,      {0} },                     /* mod .            |  聚焦到右边的tag */
+    { MODKEY|ShiftMask,    XK_comma,        tagtoleft,        {0} },                     /* mod shift ,      |  将本窗口移动到左边tag */
+    { MODKEY|ShiftMask,    XK_period,       tagtoright,       {0} },                     /* mod shift .      |  将本窗口移动到右边tag */
 
+    { MODKEY|ShiftMask,    XK_Return,       zoom,             {0} },                     /* mod shift enter  |  将当前聚焦窗口置为主窗口 */
+    { MODKEY,              XK_a,            toggleoverview,   {0} },                     /* mod a            |  显示所有tag 或 跳转到聚焦窗口的tag */
     { MODKEY,              XK_k,            focusdir,         {.i = UP } },              /* mod k            | 二维聚焦窗口 */
     { MODKEY,              XK_j,            focusdir,         {.i = DOWN } },            /* mod j            | 二维聚焦窗口 */
     { MODKEY,              XK_h,            focusdir,         {.i = LEFT } },            /* mod h            | 二维聚焦窗口 */
@@ -146,15 +146,12 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_h,            exchange_client,  {.i = LEFT} },             /* mod shift h      | 二维交换窗口 (仅平铺) */
     { MODKEY|ShiftMask,    XK_l,            exchange_client,  {.i = RIGHT } },           /* mod shift l      | 二维交换窗口 (仅平铺) */
 
-    { MODKEY,              XK_a,            toggleoverview,   {0} },                     /* mod a            |  显示所有tag 或 跳转到聚焦窗口的tag */
-
-    { MODKEY,              XK_comma,        setmfact,         {.f = -0.05} },            /* mod ,            |  缩小主工作区 */
-    { MODKEY,              XK_period,       setmfact,         {.f = +0.05} },            /* mod .            |  放大主工作区 */
+    { MODKEY,              XK_minus,        setmfact,         {.f = -0.05} },            /* mod -            |  缩小主工作区 */
+    { MODKEY,              XK_equal,        setmfact,         {.f = +0.05} },            /* mod =            |  放大主工作区 */
 
     { MODKEY,              XK_i,            hidewin,          {0} },                     /* mod i            |  隐藏 窗口 */
     { MODKEY|ShiftMask,    XK_i,            restorewin,       {0} },                     /* mod shift i      |  取消隐藏 窗口 */
 
-    { MODKEY|ShiftMask,    XK_Return,       zoom,             {0} },                     /* mod shift enter  |  将当前聚焦窗口置为主窗口 */
 
     { MODKEY,              XK_t,            togglefloating,   {0} },                     /* mod t            |  开启/关闭 聚焦目标的float模式 */
     { MODKEY|ShiftMask,    XK_t,            toggleallfloating,{0} },                     /* mod shift t      |  开启/关闭 全部目标的float模式 */
@@ -190,11 +187,11 @@ static Key keys[] = {
 
 
     /* spawn + SHCMD 执行对应命令(已下部分建议完全自己重新定义) */
-    { MODKEY|ShiftMask,    XK_F12,    spawn, SHCMD("killall dwm") },                                            /* mod shift f12  |  强制退出dwm */
-    { MODKEY,              XK_s,      togglescratch, SHCMD("st -t scratchpad -c float") },                      /* mod s          | 打开scratch终端        */
+    { MODKEY|ShiftMask,    XK_F12,    spawn, SHCMD("killall dwm") },                                            /* mod shift f12  | 强制退出dwm */
     { MODKEY,              XK_Return, spawn, SHCMD("st") },                                                     /* mod enter      | 打开st终端             */
-    { MODKEY,              XK_minus,  spawn, SHCMD("st -c FG") },                                               /* mod +          | 打开全局st终端         */
-    { MODKEY,              XK_space,  spawn, SHCMD("st -c float") },                                            /* mod space      | 打开浮动st终端         */
+    { MODKEY,              XK_space,  spawn, SHCMD("st -c FG") },                                               /* mod +          | 打开全局st终端         */
+    // { MODKEY,              XK_space,  spawn, SHCMD("st -c float") },                                            /* mod space      | 打开浮动st终端         */ */
+    // { MODKEY,              XK_s,      togglescratch, SHCMD("st -t scratchpad -c float") },                      /* mod s          | 打开scratch终端        */ */
     { MODKEY,              XK_F1,     spawn, SHCMD("killall pcmanfm || pcmanfm") },                             /* mod F1         | 打开/关闭pcmanfm       */
     { MODKEY,              XK_r,      spawn, SHCMD("rofi -show run") },                                         /* mod d          | rofi: 执行run          */
     { MODKEY,              XK_p,      spawn, SHCMD("$DWM/rofi.sh") },                                           /* mod p          | rofi: 执行自定义脚本   */
@@ -210,8 +207,8 @@ static Key keys[] = {
     TAGKEYS(XK_1, 0, 0)
     TAGKEYS(XK_2, 1, 0)
     TAGKEYS(XK_3, 2, 0)
-    TAGKEYS(XK_c, 3, "google-chrome-stable --proxy-server=\"socks5://127.0.0.1:10808\"")
-    TAGKEYS(XK_b, 4, "obsidian")
+    TAGKEYS(XK_b, 3, "obsidian")
+    TAGKEYS(XK_c, 4, "google-chrome-stable --proxy-server=\"socks5://127.0.0.1:10808\"")
     TAGKEYS(XK_m, 5, "~/scripts/music_player.sh")
     TAGKEYS(XK_0, 6, "linuxqq")
     TAGKEYS(XK_w, 7, "/opt/apps/com.qq.weixin.deepin/files/run.sh")
