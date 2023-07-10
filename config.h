@@ -57,8 +57,8 @@ static const char *tags[] = {
     "", // tag:0  key:1  desc:terminal1
     "", // tag:1  key:2  desc:terminal2
     "", // tag:2  key:3  desc:terminal3
-    "", // tag:3  key:b  desc:obsidian
-    "", // tag:4  key:c  desc:chrome
+    "", // tag:3  key:c  desc:chrome
+    "", // tag:4  key:b  desc:obsidian
     "", // tag:5  key:m  desc:music
     "ﬄ", // tag:6  key:0  desc:qq
     "﬐", // tag:7  key:w  desc:wechat
@@ -137,6 +137,15 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_Left,         tagtoleft,        {0} },                     /* mod shift left   |  将本窗口移动到左边tag */
     { MODKEY|ShiftMask,    XK_Right,        tagtoright,       {0} },                     /* mod shift right  |  将本窗口移动到右边tag */
 
+    { MODKEY,              XK_k,            focusdir,         {.i = UP } },              /* mod k            | 二维聚焦窗口 */
+    { MODKEY,              XK_j,            focusdir,         {.i = DOWN } },            /* mod j            | 二维聚焦窗口 */
+    { MODKEY,              XK_h,            focusdir,         {.i = LEFT } },            /* mod h            | 二维聚焦窗口 */
+    { MODKEY,              XK_l,            focusdir,         {.i = RIGHT } },           /* mod l            | 二维聚焦窗口 */
+    { MODKEY|ShiftMask,    XK_k,            exchange_client,  {.i = UP } },              /* mod shift k      | 二维交换窗口 (仅平铺) */
+    { MODKEY|ShiftMask,    XK_j,            exchange_client,  {.i = DOWN } },            /* mod shift j      | 二维交换窗口 (仅平铺) */
+    { MODKEY|ShiftMask,    XK_h,            exchange_client,  {.i = LEFT} },             /* mod shift h      | 二维交换窗口 (仅平铺) */
+    { MODKEY|ShiftMask,    XK_l,            exchange_client,  {.i = RIGHT } },           /* mod shift l      | 二维交换窗口 (仅平铺) */
+
     { MODKEY,              XK_a,            toggleoverview,   {0} },                     /* mod a            |  显示所有tag 或 跳转到聚焦窗口的tag */
 
     { MODKEY,              XK_comma,        setmfact,         {.f = -0.05} },            /* mod ,            |  缩小主工作区 */
@@ -179,14 +188,6 @@ static Key keys[] = {
     { MODKEY|ControlMask,  XK_Left,         resizewin,        {.ui = H_REDUCE} },        /* mod ctrl left    |  调整窗口 */
     { MODKEY|ControlMask,  XK_Right,        resizewin,        {.ui = H_EXPAND} },        /* mod ctrl right   |  调整窗口 */
 
-  	{ MODKEY,              XK_k,            focusdir,         {.i = UP } },              /* mod k            | 二维聚焦窗口 */
-  	{ MODKEY,              XK_j,            focusdir,         {.i = DOWN } },            /* mod j            | 二维聚焦窗口 */
-  	{ MODKEY,              XK_h,            focusdir,         {.i = LEFT } },            /* mod h            | 二维聚焦窗口 */
-  	{ MODKEY,              XK_l,            focusdir,         {.i = RIGHT } },           /* mod l            | 二维聚焦窗口 */
-    { MODKEY|ShiftMask,    XK_k,            exchange_client,  {.i = UP } },              /* mod shift k      | 二维交换窗口 (仅平铺) */
-    { MODKEY|ShiftMask,    XK_j,            exchange_client,  {.i = DOWN } },            /* mod shift j      | 二维交换窗口 (仅平铺) */
-    { MODKEY|ShiftMask,    XK_h,            exchange_client,  {.i = LEFT} },             /* mod shift h      | 二维交换窗口 (仅平铺) */
-    { MODKEY|ShiftMask,    XK_l,            exchange_client,  {.i = RIGHT } },           /* mod shift l      | 二维交换窗口 (仅平铺) */
 
     /* spawn + SHCMD 执行对应命令(已下部分建议完全自己重新定义) */
     { MODKEY|ShiftMask,    XK_F12,    spawn, SHCMD("killall dwm") },                                            /* mod shift f12  |  强制退出dwm */
@@ -209,8 +210,8 @@ static Key keys[] = {
     TAGKEYS(XK_1, 0, 0)
     TAGKEYS(XK_2, 1, 0)
     TAGKEYS(XK_3, 2, 0)
-    TAGKEYS(XK_b, 3, "obsidian")
-    TAGKEYS(XK_c, 4, "google-chrome-stable --proxy-server=\"socks5://127.0.0.1:10808\"")
+    TAGKEYS(XK_c, 3, "google-chrome-stable --proxy-server=\"socks5://127.0.0.1:10808\"")
+    TAGKEYS(XK_b, 4, "obsidian")
     TAGKEYS(XK_m, 5, "~/scripts/music_player.sh")
     TAGKEYS(XK_0, 6, "linuxqq")
     TAGKEYS(XK_w, 7, "/opt/apps/com.qq.weixin.deepin/files/run.sh")
