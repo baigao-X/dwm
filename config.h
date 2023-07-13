@@ -52,17 +52,18 @@ static const char scratchpadname[] = "scratchpad";
 
 /* 自定义tag名称 */
 /* 自定义特定实例的显示状态 */
-//            ﮸  ﭮ 切
+//            ﮸  ﭮ 
 static const char *tags[] = { 
     "", // tag:0  key:1  desc:terminal1
     "", // tag:1  key:2  desc:terminal2
     "", // tag:2  key:3  desc:terminal3
     "", // tag:3  key:b  desc:obsidian
     "", // tag:4  key:c  desc:chrome
-    "", // tag:5  key:m  desc:music
-    "ﬄ", // tag:6  key:0  desc:qq
-    "﬐", // tag:7  key:w  desc:wechat
-    "", // tag:8  key:l  desc:wxwork
+    "", // tag:5  key:0  desc:empty
+    "", // tag:6  key:m  desc:music
+    /* "ﬄ", // tag:7  key:0  desc:qq */
+    /* "﬐", // tag:8  key:w  desc:wechat */
+    /* "", // tag:9  key:l  desc:wxwork */
 };
 
 /* 自定义窗口显示规则 */
@@ -209,10 +210,10 @@ static Key keys[] = {
     TAGKEYS(XK_3, 2, 0)
     TAGKEYS(XK_b, 3, "obsidian")
     TAGKEYS(XK_c, 4, "google-chrome-stable --proxy-server=\"socks5://127.0.0.1:10808\"")
-    TAGKEYS(XK_m, 5, "~/scripts/music_player.sh")
-    TAGKEYS(XK_0, 6, "linuxqq")
-    TAGKEYS(XK_w, 7, "/opt/apps/com.qq.weixin.deepin/files/run.sh")
-    TAGKEYS(XK_y, 8, "/opt/apps/com.qq.weixin.work.deepin/files/run.sh")
+    TAGKEYS(XK_0, 5, 0)
+    TAGKEYS(XK_m, 6, "~/scripts/music_player.sh")
+    /* TAGKEYS(XK_0, 7, "linuxqq") */
+    /* TAGKEYS(XK_w, 8, "/opt/apps/com.qq.weixin.deepin/files/run.sh") */
 };
 
 static Button buttons[] = {
