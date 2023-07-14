@@ -10,7 +10,7 @@ call_menu() {
 execute_menu() {
     case $1 in
         ' set wallpaper')
-            feh --randomize --bg-fill ~/Pictures/wallpaper/*.png
+            feh --randomize --bg-fill ~/.local/wallpaper/*.png
             ;;
         '艹 update statusbar')
             coproc ($DWM/statusbar/statusbar.sh updateall > /dev/null 2>&1)
