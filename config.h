@@ -44,8 +44,9 @@ static const unsigned int alphas[][3]    = {          /* 透明度设置 ColFg, 
 };
 
 /* 自定义脚本位置 */
-static const char *autostartscript = "$DWM/autostart.sh";
-static const char *statusbarscript = "$DWM/statusbar/statusbar.sh";
+#define SCRIPTS_PATH "$DWM/scripts"
+static const char *autostartscript = SCRIPTS_PATH"/autostart.sh";
+static const char *statusbarscript = SCRIPTS_PATH"/statusbar/statusbar.sh";
 
 /* 自定义 scratchpad instance */
 static const char scratchpadname[] = "scratchpad";
@@ -195,10 +196,10 @@ static Key keys[] = {
     // { MODKEY,              XK_s,      togglescratch, SHCMD("st -t scratchpad -c float") },                      /* mod s          | 打开scratch终端        */ */
     { MODKEY,              XK_F1,     spawn, SHCMD("killall pcmanfm || pcmanfm") },                             /* mod F1         | 打开/关闭pcmanfm       */
     { MODKEY,              XK_r,      spawn, SHCMD("rofi -show run") },                                         /* mod d          | rofi: 执行run          */
-    { MODKEY,              XK_p,      spawn, SHCMD("$DWM/rofi.sh") },                                           /* mod p          | rofi: 执行自定义脚本   */
-    { MODKEY,              XK_n,      spawn, SHCMD("$DWM/blurlock.sh") },                                       /* mod n          | 锁定屏幕               */
-    { MODKEY|ShiftMask,    XK_Up,     spawn, SHCMD("$DWM/set_vol.sh up") },                                     /* mod shift up   | 音量加                 */
-    { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("$DWM/set_vol.sh down") },                                   /* mod shift down | 音量减                 */
+    { MODKEY,              XK_p,      spawn, SHCMD(SCRIPTS_PATH"/rofi.sh") },                                           /* mod p          | rofi: 执行自定义脚本   */
+    { MODKEY,              XK_n,      spawn, SHCMD("$DWM/scripts/blurlock.sh") },                                       /* mod n          | 锁定屏幕               */
+    { MODKEY|ShiftMask,    XK_Up,     spawn, SHCMD(SCRIPTS_PATH"/set_vol.sh up") },                                     /* mod shift up   | 音量加                 */
+    { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD(SCRIPTS_PATH"/set_vol.sh down") },                                   /* mod shift down | 音量减                 */
     { MODKEY|ShiftMask,    XK_a,      spawn, SHCMD("flameshot gui -c -p ~/Pictures/Screenshots") },             /* mod shift a    | 截图                   */
     { MODKEY|ShiftMask,    XK_q,      spawn, SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')") }, /* mod shift q    | 选中某个窗口并强制kill */
 
@@ -211,7 +212,7 @@ static Key keys[] = {
     TAGKEYS(XK_b, 3, "obsidian")
     TAGKEYS(XK_c, 4, "google-chrome-stable --proxy-server=\"socks5://127.0.0.1:10808\"")
     TAGKEYS(XK_0, 5, 0)
-    TAGKEYS(XK_m, 6, "~/scripts/music_player.sh")
+    TAGKEYS(XK_m, 6, SCRIPTS_PATH"/music_player.sh")
     /* TAGKEYS(XK_0, 7, "linuxqq") */
     /* TAGKEYS(XK_w, 8, "/opt/apps/com.qq.weixin.deepin/files/run.sh") */
 };
@@ -238,6 +239,7 @@ static Button buttons[] = {
     { ClkStatusText,       0,               Button5,          clickstatusbar,{0} },                                   // 鼠标滚轮下  |  状态栏       |  根据状态栏的信号执行 ~/scripts/dwmstatusbar.sh $signal D
                                                                                                                       //
     /* 点击bar空白处 */
-    { ClkBarEmpty,         0,               Button1,          spawn, SHCMD("~/scripts/call_rofi.sh window") },        // 左键        |  bar空白处    |  rofi 执行 window
-    { ClkBarEmpty,         0,               Button3,          spawn, SHCMD("~/scripts/call_rofi.sh drun") },          // 右键        |  bar空白处    |  rofi 执行 drun
+    { ClkBarEmpty,         0,               Button1,          spawn, SHCMD(SCRIPTS_PATH"/call_rofi.sh window") },        // 左键        |  bar空白处    |  rofi 执行 window
+    { ClkBarEmpty,         0,               Button3,          spawn, SHCMD(SCRIPTS_PATH"/call_rofi.sh drun") },          // 右键        |  bar空白处    |  rofi 执行 drun
 };
+

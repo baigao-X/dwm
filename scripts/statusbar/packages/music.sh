@@ -12,13 +12,14 @@ signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
     music_text="$(mpc current)"
-    icon=" 󰝚 "
-    if $music_text=~"\""; then
-        text=$(echo $music_text | sed -e "s/\"\\\\\"/g")
+    echo "$music_text"
+    icon=""
+    if [[ "$music_text" =~ "\"" ]]; then
+        text=$(echo "$music_text" | sed -e "s/\"\\\\\"/g")
     else
         text=" $music_text "
     fi
-    [ "$(mpc status | grep "paused")" ] && icon=" 󰐎 "
+    [ "$(mpc status | grep "paused")" ] && icon=""
 
     sed -i '/^export '$this'=.*$/d' $tempfile
     [ ! "$music_text" ] && return

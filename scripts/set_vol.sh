@@ -1,6 +1,6 @@
 #! /bin/bash
 
-dwmdir=$(cd $(dirname $0); cd .. ;pwd)
+dwmscriptsdir=$(cd $(dirname $0); cd .. ;pwd)
 
 sink=$(pactl info | grep 'Default Sink' | awk '{print $3}')
 vol=$(pactl list sinks | grep $sink -A 7 | sed -n '8p' | awk '{printf int($5)}')
@@ -12,5 +12,5 @@ case $1 in
 esac
 
 pactl set-sink-volume @DEFAULT_SINK@ $target
-bash $dwmdir/statusbar/statusbar.sh update vol
-bash $dwmdir/statusbar/packages/vol.sh notify 
+bash $dwmscriptsdir/statusbar/statusbar.sh update vol
+bash $dwmscriptsdir/statusbar/packages/vol.sh notify 

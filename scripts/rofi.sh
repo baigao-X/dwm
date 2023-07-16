@@ -1,4 +1,7 @@
 # 打印菜单
+#
+dwmscriptsdir=$(cd $(dirname $0); cd .. ;pwd)
+
 call_menu() {
     echo ' set wallpaper'
     echo '艹 update statusbar'
@@ -13,13 +16,13 @@ execute_menu() {
             feh --randomize --bg-fill ~/.local/wallpaper/*.png
             ;;
         '艹 update statusbar')
-            coproc ($DWM/statusbar/statusbar.sh updateall > /dev/null 2>&1)
+            coproc ($dwmscriptsdir/statusbar/statusbar.sh updateall > /dev/null 2>&1)
             ;;
         ' open v2raya')
-            coproc (sudo docker restart v2raya > /dev/null && $DWM/statusbar/statusbar.sh updateall > /dev/null)
+            coproc (sudo docker restart v2raya > /dev/null && $dwmscriptsdir/statusbar/statusbar.sh updateall > /dev/null)
             ;;
         ' close v2raya')
-            coproc (sudo docker stop v2raya > /dev/null && $DWM/statusbar/statusbar.sh updateall > /dev/null)
+            coproc (sudo docker stop v2raya > /dev/null && $dwmscriptsdir/statusbar/statusbar.sh updateall > /dev/null)
             ;;
         ' open picom')
             coproc (picom --experimental-backends --config ~/.config/picom/picom.conf > /dev/null 2>&1)
