@@ -192,14 +192,15 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_F12,    spawn, SHCMD("killall dwm") },                                            /* mod shift f12  | 强制退出dwm */
     { MODKEY,              XK_Return, spawn, SHCMD("st") },                                                     /* mod enter      | 打开st终端             */
     { MODKEY,              XK_space,  spawn, SHCMD("st -c FG") },                                               /* mod +          | 打开全局st终端         */
-    // { MODKEY,              XK_space,  spawn, SHCMD("st -c float") },                                            /* mod space      | 打开浮动st终端         */ */
-    // { MODKEY,              XK_s,      togglescratch, SHCMD("st -t scratchpad -c float") },                      /* mod s          | 打开scratch终端        */ */
+    // { MODKEY,              XK_space,  spawn, SHCMD("st -c float") },                                         /* mod space      | 打开浮动st终端         */ */
+    // { MODKEY,              XK_s,      togglescratch, SHCMD("st -t scratchpad -c float") },                   /* mod s          | 打开scratch终端        */ */
     { MODKEY,              XK_F1,     spawn, SHCMD("killall pcmanfm || pcmanfm") },                             /* mod F1         | 打开/关闭pcmanfm       */
     { MODKEY,              XK_r,      spawn, SHCMD("rofi -show run") },                                         /* mod d          | rofi: 执行run          */
-    { MODKEY,              XK_p,      spawn, SHCMD(SCRIPTS_PATH"/rofi.sh") },                                           /* mod p          | rofi: 执行自定义脚本   */
-    { MODKEY,              XK_n,      spawn, SHCMD("$DWM/scripts/blurlock.sh") },                                       /* mod n          | 锁定屏幕               */
-    { MODKEY|ShiftMask,    XK_Up,     spawn, SHCMD(SCRIPTS_PATH"/set_vol.sh up") },                                     /* mod shift up   | 音量加                 */
-    { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD(SCRIPTS_PATH"/set_vol.sh down") },                                   /* mod shift down | 音量减                 */
+    { MODKEY,              XK_slash,  spawn, SHCMD("rofi -show recursivebrowser") },                            /* mod /          | rofi: 执行run          */
+    { MODKEY,              XK_p,      spawn, SHCMD(SCRIPTS_PATH"/rofi.sh") },                                   /* mod p          | rofi: 执行自定义脚本   */
+    { MODKEY,              XK_n,      spawn, SHCMD("$DWM/scripts/blurlock.sh") },                               /* mod n          | 锁定屏幕               */
+    { MODKEY|ShiftMask,    XK_Up,     spawn, SHCMD(SCRIPTS_PATH"/set_vol.sh up") },                             /* mod shift up   | 音量加                 */
+    { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD(SCRIPTS_PATH"/set_vol.sh down") },                           /* mod shift down | 音量减                 */
     { MODKEY|ShiftMask,    XK_a,      spawn, SHCMD("flameshot gui -c -p ~/Pictures/Screenshots") },             /* mod shift a    | 截图                   */
     { MODKEY|ShiftMask,    XK_q,      spawn, SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')") }, /* mod shift q    | 选中某个窗口并强制kill */
 
