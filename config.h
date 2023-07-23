@@ -211,7 +211,7 @@ static Key keys[] = {
     TAGKEYS(XK_2, 1, 0)
     TAGKEYS(XK_3, 2, 0)
     TAGKEYS(XK_b, 3, "obsidian")
-    TAGKEYS(XK_c, 4, "google-chrome-stable --proxy-server=\"socks5://127.0.0.1:10808\"")
+    TAGKEYS(XK_c, 4, "google-chrome-stable")
     TAGKEYS(XK_0, 5, 0)
     TAGKEYS(XK_m, 6, SCRIPTS_PATH"/music_player.sh")
     /* TAGKEYS(XK_0, 7, "linuxqq") */
