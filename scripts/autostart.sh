@@ -20,8 +20,8 @@ daemons() {
     fcitx5 &                                  # 开启输入法
     lemonade server &                         # 开启lemonade 远程剪切板支持
     flameshot &                               # 截图要跑一个程序在后台 不然无法将截图保存到剪贴板
-    keepassxc &                               # 密码管理软件
-    eudic.AppImage &                          # 欧路词典 
+    # keepassxc &                               # 密码管理软件
+    # eudic.AppImage &                          # 欧路词典 
     nutstore &                                # 坚果云同步
     dunst -conf ~/scripts/config/dunst.conf & # 开启通知server
     picom --experimental-backends --config ~/.config/picom/picom.conf >> /dev/null 2>&1 & # 开启picom

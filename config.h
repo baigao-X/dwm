@@ -60,8 +60,9 @@ static const char *tags[] = {
     "", // tag:2  key:3  desc:terminal3
     "", // tag:3  key:b  desc:obsidian
     "", // tag:4  key:c  desc:chrome
-    "", // tag:5  key:0  desc:empty
-    "", // tag:6  key:m  desc:music
+    "", // tag:5  key:d  desc:eduic
+    "", // tag:6  key:0  desc:empty
+    "", // tag:7  key:m  desc:music
     /* "ﬄ", // tag:7  key:0  desc:qq */
     /* "﬐", // tag:8  key:w  desc:wechat */
     /* "", // tag:9  key:l  desc:wxwork */
@@ -212,8 +213,9 @@ static Key keys[] = {
     TAGKEYS(XK_3, 2, 0)
     TAGKEYS(XK_b, 3, "obsidian")
     TAGKEYS(XK_c, 4, "google-chrome-stable")
-    TAGKEYS(XK_0, 5, 0)
-    TAGKEYS(XK_m, 6, SCRIPTS_PATH"/music_player.sh")
+    TAGKEYS(XK_d, 5, "eudic.AppImage")
+    TAGKEYS(XK_0, 6, 0)
+    TAGKEYS(XK_m, 7, SCRIPTS_PATH"/music_player.sh")
     /* TAGKEYS(XK_0, 7, "linuxqq") */
     /* TAGKEYS(XK_w, 8, "/opt/apps/com.qq.weixin.deepin/files/run.sh") */
 };
