@@ -214,7 +214,7 @@ static Key keys[] = {
     TAGKEYS(XK_3, 2, 0, 0)
     TAGKEYS(XK_b, 3, "obsidian", "ps -aux | grep obsidian | grep -v grep | wc -l")
     TAGKEYS(XK_c, 4, "google-chrome-stable", "ps -aux | grep google-chrome | grep -v grep | wc -l")
-    TAGKEYS(XK_d, 5, "eudic.AppImage", 0)
+    TAGKEYS(XK_d, 5, "eudic.AppImage", "ps -aux | grep eudic.AppImage | grep -v grep | wc -l")
     TAGKEYS(XK_0, 6, 0, 0)
     TAGKEYS(XK_m, 7, SCRIPTS_PATH"/music_player.sh", 0)
     /* TAGKEYS(XK_0, 7, "linuxqq", 0) */
