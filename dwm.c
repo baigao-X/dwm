@@ -25,6 +25,7 @@
 #include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -106,12 +107,12 @@ typedef struct {
 	unsigned int ui;
 	float f;
 	const void *v;
+	const void *j;
 } Arg;
 
 typedef struct {
 	unsigned int click;
-	unsigned int mask;
-	unsigned int button;
+	unsigned int mask; unsigned int button;
 	void (*func)(const Arg *arg);
 	const Arg arg;
 } Button;
@@ -2634,6 +2635,20 @@ spawn(const Arg *arg)
     }
 }
 
+bool judge(const Arg *arg) {
+	FILE* fp = popen(arg->j, "r");
+	if (NULL == fp) {
+		return true;
+	}
+	char buf[256] = {0};
+	fgets(buf, 255, fp);
+	fclose(fp);
+	FILE *log = fopen("/var/tmp/dwm.log", "w+");
+	fprintf(log,"tmp %s\n", buf);
+	fclose(log);
+	return atoi(buf) == 0;
+}
+
 void
 tag(const Arg *arg)
 {
@@ -3330,9 +3345,14 @@ view(const Arg *arg)
 
     // 若当前tag无窗口 且附加了v参数 则执行
     if (arg->v) {
-        for (c = selmon->clients; c; c = c->next)
-            if (c->tags & arg->ui && !HIDDEN(c) && !c->isglobal)
-                n++;
+		if (arg->j) {
+			n = judge(arg)? 0 : 1;
+		} else {
+			for (c = selmon->clients; c; c = c->next)
+				if (c->tags & arg->ui && !HIDDEN(c) && !c->isglobal)
+					n++;
+		}
+
         if (n == 0) {
             spawn(&(Arg){ .v = (const char*[]){ "/bin/sh", "-c", arg->v, NULL } });
         }

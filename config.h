@@ -121,8 +121,8 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 #define MODKEY Mod1Mask //alt
 //#define MODKEY Mod4Mask //super
-#define TAGKEYS(KEY, TAG, cmd) \
-    { MODKEY,              KEY, view,       {.ui = 1 << TAG, .v = cmd} }, \
+#define TAGKEYS(KEY, TAG, cmd, judge) \
+    { MODKEY,              KEY, view,       {.ui = 1 << TAG, .v = cmd, .j = judge} }, \
     { MODKEY|ShiftMask,    KEY, tag,        {.ui = 1 << TAG} }, \
     { MODKEY|ControlMask,  KEY, toggleview, {.ui = 1 << TAG} }, \
 
@@ -208,16 +208,17 @@ static Key keys[] = {
     /* super key : 跳转到对应tag (可附加一条命令 若目标目录无窗口，则执行该命令) */
     /* super shift key : 将聚焦窗口移动到对应tag */
     /* key tag cmd */
-    TAGKEYS(XK_1, 0, 0)
-    TAGKEYS(XK_2, 1, 0)
-    TAGKEYS(XK_3, 2, 0)
-    TAGKEYS(XK_b, 3, "obsidian")
-    TAGKEYS(XK_c, 4, "google-chrome-stable")
-    TAGKEYS(XK_d, 5, "eudic.AppImage")
-    TAGKEYS(XK_0, 6, 0)
-    TAGKEYS(XK_m, 7, SCRIPTS_PATH"/music_player.sh")
-    /* TAGKEYS(XK_0, 7, "linuxqq") */
-    /* TAGKEYS(XK_w, 8, "/opt/apps/com.qq.weixin.deepin/files/run.sh") */
+
+    TAGKEYS(XK_1, 0, 0, 0)
+    TAGKEYS(XK_2, 1, 0, 0)
+    TAGKEYS(XK_3, 2, 0, 0)
+    TAGKEYS(XK_b, 3, "obsidian", "ps -aux | grep obsidian | grep -v grep | wc -l")
+    TAGKEYS(XK_c, 4, "google-chrome-stable", "ps -aux | grep google-chrome | grep -v grep | wc -l")
+    TAGKEYS(XK_d, 5, "eudic.AppImage", 0)
+    TAGKEYS(XK_0, 6, 0, 0)
+    TAGKEYS(XK_m, 7, SCRIPTS_PATH"/music_player.sh", 0)
+    /* TAGKEYS(XK_0, 7, "linuxqq", 0) */
+    /* TAGKEYS(XK_w, 8, "/opt/apps/com.qq.weixin.deepin/files/run.sh", 0) */
 };
 
 static Button buttons[] = {
