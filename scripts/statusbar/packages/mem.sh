@@ -7,9 +7,8 @@ this=_mem
 icon_color="^c#3B001B^^b#6873790x88^"
 text_color="^c#3B001B^^b#6873790x99^"
 signal=$(echo "^s$this^" | sed 's/_//')
-
 update() {
-	mem_icon=""
+	mem_icon=""
     mem_total=$(cat /proc/meminfo | grep "MemTotal:"| awk '{print $2}')
     mem_free=$(cat /proc/meminfo | grep "MemFree:"| awk '{print $2}')
     mem_buffers=$(cat /proc/meminfo | grep "Buffers:"| awk '{print $2}')
