@@ -25,7 +25,8 @@ daemons() {
     nekoray &                                 # 魔法
     nutstore &                                # 坚果云同步
     dunst -conf ~/scripts/config/dunst.conf & # 开启通知server
-    picom --config ~/.config/picom/picom.conf >> /dev/null 2>&1 & # 开启picom
+    # picom --config ~/.config/picom/picom.conf >> /dev/null 2>&1 & # 开启picom
+    picom >> /dev/null 2>&1 & # 开启picom
 }
 
 cron() {
