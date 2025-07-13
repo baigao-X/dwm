@@ -2643,9 +2643,6 @@ bool judge(const Arg *arg) {
 	char buf[256] = {0};
 	fgets(buf, 255, fp);
 	fclose(fp);
-	FILE *log = fopen("/var/tmp/dwm.log", "w+");
-	fprintf(log,"tmp %s\n", buf);
-	fclose(log);
 	return atoi(buf) == 0;
 }
 
