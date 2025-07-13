@@ -56,13 +56,15 @@ static const char scratchpadname[] = "scratchpad";
 //            ﮸  ﭮ 
 static const char *tags[] = { 
     "", // tag:0  key:1  desc:terminal1
-    "", // tag:1  key:2  desc:terminal2
-    "", // tag:2  key:3  desc:terminal3
-    "", // tag:3  key:b  desc:obsidian
-    "", // tag:4  key:c  desc:chrome
-    "", // tag:5  key:d  desc:eduic
-    "", // tag:6  key:0  desc:empty
-    "", // tag:7  key:m  desc:music
+    "󰎧", // tag:1  key:2  desc:terminal2
+    "󰎪", // tag:2  key:3  desc:terminal3
+    "󰎭", // tag:3  key:4  desc:terminal4
+    "󰎱", // tag:4  key:5  desc:terminal5
+    "", // tag:5  key:b  desc:obsidian
+    "", // tag:6  key:c  desc:chrome
+    // "", // tag:5  key:d  desc:eduic
+    "", // tag:7  key:0  desc:empty
+    // "", // tag:7  key:m  desc:music
     /* "ﬄ", // tag:7  key:0  desc:qq */
     /* "﬐", // tag:8  key:w  desc:wechat */
     /* "", // tag:9  key:l  desc:wxwork */
@@ -83,10 +85,10 @@ static const Rule rules[] = {
     { NULL,                  NULL,                "图片查看",        0,            1,          0,          0,        -1,      0}, // 微信图片查看器      浮动
 
     /** 普通优先度 */
-    {"obsidian",             NULL,                 NULL,             1 << 3,       0,          0,          0,        -1,      0}, // obs        tag -> 󰕧
-    {"chrome",               NULL,                 NULL,             1 << 4,       0,          0,          0,        -1,      0}, // chrome     tag -> 
-    {"Chromium",             NULL,                 NULL,             1 << 4,       0,          0,          0,        -1,      0}, // Chromium   tag -> 
-    {"music",                NULL,                 NULL,             1 << 5,       1,          0,          1,        -1,      0}, // music      tag ->  浮动、无边框
+    {"obsidian",             NULL,                 NULL,             1 << 5,       0,          0,          0,        -1,      0}, // obs        tag -> 󰕧
+    {"chrome",               NULL,                 NULL,             1 << 6,       0,          0,          0,        -1,      0}, // chrome     tag -> 
+    {"Chromium",             NULL,                 NULL,             1 << 6,       0,          0,          0,        -1,      0}, // Chromium   tag -> 
+    // {"music",                NULL,                 NULL,             1 << 5,       1,          0,          1,        -1,      0}, // music      tag ->  浮动、无边框
     { NULL,                 "qq",                  NULL,             1 << 6,       0,          0,          1,        -1,      0}, // qq         tag -> ﬄ 无边框
     { NULL,                 "wechat.exe",          NULL,             1 << 7,       0,          0,          1,        -1,      0}, // wechat     tag -> ﬐ 无边框
     { NULL,                 "wxwork.exe",          NULL,             1 << 8,       0,          0,          1,        -1,      0}, // workwechat tag ->  无边框
@@ -110,12 +112,13 @@ static const Rule rules[] = {
     { NULL,                  NULL,                "broken",          0,            1,          0,          0,        -1,      0}, // 错误载入时 会有broken 浮动
 };
 static const char *overviewtag = "OVERVIEW";
-static const Layout overviewlayout = { "舘",  overview };
+static const Layout overviewlayout = { "󰍄",  overview };
 
 /* 自定义布局 */
 static const Layout layouts[] = {
-    { "﬿",  tile },         /* 主次栈 */
-    { "﩯",  magicgrid },    /* 网格 */
+    { "󰙀",  tile },         /* 主次栈 */
+    { "󰕰",  magicgrid },    /* 网格 */
+    // { "󰾍",  magicgrid },    /* 网格 */
 };
 
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -212,11 +215,13 @@ static Key keys[] = {
     TAGKEYS(XK_1, 0, 0, 0)
     TAGKEYS(XK_2, 1, 0, 0)
     TAGKEYS(XK_3, 2, 0, 0)
-    TAGKEYS(XK_b, 3, "obsidian", "ps -aux | grep obsidian | grep -v grep | wc -l")
-    TAGKEYS(XK_c, 4, "google-chrome-stable", "ps -aux | grep google-chrome | grep -v grep | wc -l")
-    TAGKEYS(XK_d, 5, "eudic.AppImage", "ps -aux | grep eudic.AppImage | grep -v grep | wc -l")
-    TAGKEYS(XK_0, 6, 0, 0)
-    TAGKEYS(XK_m, 7, SCRIPTS_PATH"/music_player.sh", 0)
+    TAGKEYS(XK_4, 3, 0, 0)
+    TAGKEYS(XK_5, 4, 0, 0)
+    TAGKEYS(XK_b, 5, "obsidian", "ps -aux | grep obsidian | grep -v grep | wc -l")
+    TAGKEYS(XK_c, 6, "google-chrome-stable", "ps -aux | grep google-chrome | grep -v grep | wc -l")
+ // TAGKEYS(XK_d, 5, "eudic.AppImage", "ps -aux | grep eudic.AppImage | grep -v grep | wc -l")
+    TAGKEYS(XK_0, 7, 0, 0)
+    // TAGKEYS(XK_m, 8, SCRIPTS_PATH"/music_player.sh", 0)
     /* TAGKEYS(XK_0, 7, "linuxqq", 0) */
     /* TAGKEYS(XK_w, 8, "/opt/apps/com.qq.weixin.deepin/files/run.sh", 0) */
 };
