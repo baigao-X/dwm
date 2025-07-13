@@ -22,7 +22,7 @@ daemons() {
     # flameshot &                               # 截图要跑一个程序在后台 不然无法将截图保存到剪贴板
     # keepassxc &                               # 密码管理软件
     # eudic.AppImage &                          # 欧路词典 
-    nekoray &                                 # 魔法
+    sudo nekoray &                            # 魔法
     nutstore &                                # 坚果云同步
     dunst -conf ~/scripts/config/dunst.conf & # 开启通知server
     # picom --config ~/.config/picom/picom.conf >> /dev/null 2>&1 & # 开启picom
