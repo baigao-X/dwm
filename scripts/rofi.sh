@@ -13,7 +13,7 @@ call_menu() {
 execute_menu() {
     case $1 in
         ' set wallpaper')
-            feh --randomize --bg-fill ~/.local/wallpaper/*.png
+            feh --randomize --bg-fill ~/.local/wallpaper/*.{png,jpg,jpeg}
             ;;
         '艹 update statusbar')
             coproc ($dwmscriptsdir/statusbar/statusbar.sh updateall > /dev/null 2>&1)
